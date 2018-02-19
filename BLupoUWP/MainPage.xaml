@@ -6,8 +6,53 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <TextBlock Text="Window Glazier Calcualtions" FontSize="25" />
+        </StackPanel>
+        <Grid x:Name="FormLayoutGrid" Grid.Row="1" Grid.Column="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="label_width" Text="Enter Width" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="10"/>
+            <TextBox x:Name="tb_width1" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left"  Text="" VerticalAlignment="Center"  Width="100" TextChanged="Width_Text_Change"/>
+            <TextBlock x:Name="tb_widthError" Grid.Column="1" Grid.Row="0" Text="" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Visible" Foreground="#FFF31D1D" />
+            <TextBlock x:Name="label_height" Text="Enter Height" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="10"/>
+            <TextBox x:Name="tb_height" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left"  Text="" VerticalAlignment="Center" Width="100" TextChanged="Height_Text_Changed" />
+            <TextBlock x:Name="tb_heightError" Grid.Column="1" Grid.Row="1" Text="" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Visible" Foreground="#FFF31D1D" />
+            <TextBlock x:Name="label_tint" Text="Select Tint" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="10" />
+            <ComboBox Grid.Column="1" Grid.Row="2" x:Name="cb_color" HorizontalAlignment="Left"  VerticalAlignment="Center" IsSynchronizedWithCurrentItem="False" Width="100">
+                <x:String>Black</x:String>
+                <x:String>Brown</x:String>
+                <x:String>Blue</x:String>
+            </ComboBox>
+            <StackPanel Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" x:Name="st1" Orientation="Vertical" Background="Azure" Padding="10">
+                <TextBlock x:Name="tb1" Text="Drag to select quantity" TextWrapping="NoWrap"/>
+                <Slider x:Name="slider" Maximum="50" Minimum="1" TickFrequency="1" TickPlacement="BottomRight" ValueChanged="slider1_valueChanged" Orientation="Horizontal" Margin="0,0,12,0" />
+                <TextBlock x:Name="txtResult" Text="{Binding ElementName=slider,Path=Value}" HorizontalAlignment="Center" />
+            </StackPanel>
+            <Button Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Content="Submit" HorizontalAlignment="Center"  VerticalAlignment="Center" Click="Button_Click"/>
+            
+        </Grid>
     </Grid>
+
 </Page>
